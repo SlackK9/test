@@ -38,7 +38,7 @@ bot = Bot(command_prefix=commands.when_mentioned_or("$"), intents=intents)
 
 try:
     token = decouple.config('TOKEN')
-except decouple.UndefinedValueError:
+except Exception as e:
     token = None
     print("No token found in .env file")
 

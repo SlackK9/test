@@ -41,10 +41,8 @@ bot = Bot(command_prefix=commands.when_mentioned_or("$"), intents=intents)
 
 try:
     token = os.getenv("TOKEN")
-except Exception as e:
+except decouple.UndefinedValueError:
     token = None
     print("No token found in .env file")
 
-bot.run(str(token))
-        
-
+bot.run(token=token)

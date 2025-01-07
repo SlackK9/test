@@ -46,5 +46,3 @@ except decouple.UndefinedValueError:
     print("No token found in .env file")
 
 bot.run(token=token)
-        
-

@@ -2,7 +2,10 @@ import discord
 from discord.ext import commands
 import jishaku
 from pkgutil import iter_modules
-import decouple
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 intents = discord.Intents.all()
 
@@ -37,7 +40,7 @@ class Bot(commands.Bot):
 bot = Bot(command_prefix=commands.when_mentioned_or("$"), intents=intents)
 
 try:
-    token = decouple.config('TOKEN')
+    token = os.getenv("TOKEN")
 except decouple.UndefinedValueError:
     token = None
     print("No token found in .env file")
